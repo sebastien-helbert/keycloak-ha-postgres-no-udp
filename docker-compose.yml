@@ -1,0 +1,37 @@
+version: '3.1'
+services:
+  postgres:
+    image: postgres:10.1
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+  keycloak1:
+    build : .
+    ports:
+    - 8083:8080
+    links:
+    - postgres:postgres
+    environment:
+      KEYCLOAK_USER: keycloak
+      KEYCLOAK_PASSWORD: keycloak
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+      POSTGRES_PORT_5432_TCP_ADDR: postgres
+      JGROUPS_TCPPING_INITIAL_HOSTS: keycloak1[7600],keycloak2[7600]
+  keycloak2:
+    build : .
+    ports:
+    - 8084:8080
+    links:
+    - postgres:postgres
+    - keycloak1:keycloak1
+    environment:
+      KEYCLOAK_USER: keycloak
+      KEYCLOAK_PASSWORD: keycloak
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+      POSTGRES_PORT_5432_TCP_ADDR: postgres
+      JGROUPS_TCPPING_INITIAL_HOSTS: keycloak1[7600],keycloak2[7600]
