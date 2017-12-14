@@ -135,7 +135,7 @@
                     </security>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-java-context="true" use-ccm="true">
-                    <connection-url>jdbc:postgresql://${env.POSTGRES_HOST:postgres}:${env.POSTGRES_PORT:5432}/${env.POSTGRES_DATABASE:keycloak}</connection-url>
+                    <connection-url>jdbc:postgresql://${env.POSTGRES_PORT_5432_TCP_ADDR}:${env.POSTGRES_PORT_5432_TCP_PORT:5432}/${env.POSTGRES_DATABASE:keycloak}</connection-url>
                     <driver>postgresql</driver>
                     <pool>
                         <flush-strategy>IdleConnections</flush-strategy>
