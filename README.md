@@ -1,6 +1,7 @@
 # Keycloak HA PostgreSQL without multicast
 
-Extension of jboss/keycloak-ha-postgres official image which don't rely on UDP (multicast) for clustering but use TCP (unicast) instead.
+Extension of jboss/keycloak-ha-postgres official image which don't rely on UDP (multicast) for clustering but instead use TCP (unicast).
+Useful for orchestators which does not support multicast between distinct hosts like [Docker Swarm](https://docs.docker.com/engine/userguide/networking/overlay-standalone-swarm/) or [Cattle](https://github.com/rancher/cattle)
 
 ## Supported tags and respective `Dockerfile` links
 
