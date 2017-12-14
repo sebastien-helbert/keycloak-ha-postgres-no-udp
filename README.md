@@ -21,7 +21,7 @@ Start one Keycloak instance that form a cluster and connect to the PostgreSQL in
     docker run --name keycloak1 -p 8081:8080 --link postgres:postgres -e POSTGRES_DATABASE=keycloak -e POSTGRES_USER=keycloak -e POSTGRES_PASSWORD=keycloak shelbert/keycloak-ha-postgres-no-udp
 
 
-Browse to [http://localhost:8081](http://localhost:8081]) and connect to the first instance.
+Browse to [http://localhost:8081](http://localhost:8081) to connect to the first instance.
 
 Start more Keycloak instances that form a cluster with the first one :
 
