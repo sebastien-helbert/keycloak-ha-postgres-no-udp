@@ -21,14 +21,14 @@ Start one Keycloak instance that form a cluster and connect to the PostgreSQL in
     docker run --name keycloak1 -p 8081:8080 --link postgres:postgres -e KEYCLOAK_USER=keycloak -e KEYCLOAK_PASSWORD=keycloak -e POSTGRES_DATABASE=keycloak -e POSTGRES_USER=keycloak -e POSTGRES_PASSWORD=keycloak shelbert/keycloak-ha-postgres-no-udp
 
 
-Browse to [http://localhost:8081](http://localhost:8081) to connect to the first instance (login : keycloak/keycloak).
+Browse to [http://localhost:8081](http://localhost:8081) to connect to the first instance (log in : keycloak/keycloak).
 
 Start more Keycloak instances that form a cluster with the first one :
 
     docker run --name keycloak2 -p 8082:8080 --link keycloak1:keycloak1 --link postgres:postgres -e KEYCLOAK_USER=keycloak -e KEYCLOAK_PASSWORD=keycloak -e POSTGRES_DATABASE=keycloak -e POSTGRES_USER=keycloak -e POSTGRES_PASSWORD=keycloak -e JGROUPS_TCPPING_INITIAL_HOSTS=keycloak1[7600] shelbert/keycloak-ha-postgres-no-udp
 
 
-Browse to [http://localhost:8082](http://localhost:8082) and check that modifications in first instance are visible from the second one and vice versa.
+Browse to [http://localhost:8082](http://localhost:8082) and check that changes in first instance are visible from the second one and vice versa.
 
 
 ## Environment Variables
