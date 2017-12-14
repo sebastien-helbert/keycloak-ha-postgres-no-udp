@@ -18,11 +18,12 @@ First start a PostgreSQL instance using the PostgreSQL docker image:
 
 Start one Keycloak instance that form a cluster and connect to the PostgreSQL instance running in previously started 'postgres' container:
 
-    docker run --name keycloak1 --link postgres:postgres -e POSTGRES_DATABASE=keycloak -e POSTGRES_USER=keycloak -e POSTGRES_PASSWORD=keycloak shelbert/keycloak-ha-postgres-unicast
+    docker run --name keycloak1 --link postgres:postgres -e POSTGRES_DATABASE=keycloak -e POSTGRES_USER=keycloak -e POSTGRES_PASSWORD=keycloak shelbert/keycloak-ha-postgres-no-udp
 
 Start more Keycloak instances that form a cluster with the first one :
 
-    docker run --name keycloak2 --link keycloak1:keycloak1 --link postgres:postgres -e POSTGRES_DATABASE=keycloak -e POSTGRES_USER=keycloak -e POSTGRES_PASSWORD=keycloak -e JGROUPS_TCPPING_INITIAL_HOSTS=keycloak1[7600] shelbert/keycloak-ha-postgres-unicast
+    docker run --name keycloak2 --link keycloak1:keycloak1 --link postgres:postgres -e POSTGRES_DATABASE=keycloak -e POSTGRES_USER=keycloak -e POSTGRES_PASSWORD=keycloak -e JGROUPS_TCPPING_INITIAL_HOSTS=keycloak1[7600] shelbert/keycloak-ha-postgres-no-udp
+
 
 
 ## Environment Variables
